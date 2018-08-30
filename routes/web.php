@@ -15,7 +15,14 @@ Route::redirect('/', 'blog');
 
 Auth::routes();
 
-Route::get('/blog', 'Web\PageController@blog')->name('blog');
-Route::get('show/{slug}', 'Web\PageController@post')->name('post');
+//WEB
+Route::get('/blog',            'Web\PageController@blog')->name('blog');
+Route::get('show/{slug}',      'Web\PageController@post')->name('post');
 Route::get('categorie/{slug}', 'Web\PageController@category')->name('category');
 Route::get('etiquette/{slug}', 'Web\PageController@tag')->name('tag');
+
+
+//ADMIN
+Route::resource('tags',        'Admin\TagController');
+Route::resource('categories',  'Admin\CategoryController');
+Route::resource('posts',       'Admin\PostController');
