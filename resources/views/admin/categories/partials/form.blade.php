@@ -9,6 +9,11 @@
 </div>
 
 <div class="form-group">
+	{{ Form::label('body', 'Descripton') }}
+	{{ Form::textarea('body', null, ['class' => 'form-control']) }}
+</div>
+
+<div class="form-group">
 	{{ Form::submit('Soumettre', ['class' => 'btn btn-sm btn-primary']) }}
 </div>
 
