@@ -6,8 +6,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Liste des Etiquettes
-                    <a href="{{ route('tags.create') }}">Creer</a>
+                    Liste des Categories
+                    <a href="{{ route('categories.create') }}">Creer</a>
                 </div>
             </div>
 
@@ -21,22 +21,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($tags as $tag)
+                        @foreach($categories as $category)
                             <tr>
-                                <td>{{ $tag->id }}</td>
-                                <td>{{ $tag->name }}</td>
+                                <td>{{ $category->id }}</td>
+                                <td>{{ $category->name }}</td>
                                 <td width="10px">
-                                    <a href="{{ route('tags.show', $tag->id) }}" 
+                                    <a href="{{ route('categories.show', $category->id) }}" 
                                         class="btn btn-sm btn-info"> Voir</a>
                                 </td>
 
                                 <td width="10px">
-                                    <a href="{{ route('tags.edit', $tag->id) }}" 
+                                    <a href="{{ route('categories.edit', $category->id) }}" 
                                         class="btn btn-sm btn-primary"> Modifier</a>
                                 </td>
 
                                 <td width="10px">
-                                    {!! Form::open(['route' => ['tags.destroy', $tag->id], 'method' => 'DELETE']) !!}
+                                    {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
                                         <button class="btn btn-danger">
                                             Supprimer
                                         </button>
@@ -46,7 +46,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{$tags->render()}}
+                {{$categories->render()}}
             </div>
         </div>
     </div>

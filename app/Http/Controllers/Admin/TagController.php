@@ -69,9 +69,9 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tags = Tag::find($id);
+        $tag = Tag::find($id);
 
-        return view('admin.tags.edit', compact('tags'));
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -85,7 +85,9 @@ class TagController extends Controller
     {
         $tag = Tag::find($id);
 
-        $tag->fill($request->all())->save();
+        $tag->name = $request->input('name');
+        $tag->slug = $request->input('slug');
+        $tag->save();
 
         return redirect()->route('tags.edit', $tag->id)
             ->with('info', 'Etiquette a  bien été mis a jour');

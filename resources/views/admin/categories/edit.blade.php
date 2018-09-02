@@ -6,14 +6,15 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-efault">
                 <div class="panel-heading">
-                    Editer l'étiquette
+                    Editer la categorie
                 </div>
 
                 <div class="panel-body">
-                    {!! Form::open(['route' => ['tags.store']]) !!}
+                    {!! Form::model($category, ['route' => ['categories.update', $category->id], 
+                    'method' => 'PUT']) !!}
 
-                        @include('admin.tags.partials.form')
-
+                        @include('admin.categories.partials.form')
+                        
                     {!! Form::close() !!}
                 </div>
             </div>

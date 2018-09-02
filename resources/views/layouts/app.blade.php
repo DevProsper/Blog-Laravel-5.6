@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/js.js')}}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -71,8 +72,38 @@
         </nav>
 
         <main class="py-4">
+            @if(session('info'))
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="alert alert-primary" role="alert">
+                                {{ session('info') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            @if(count($errors))
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="alert alert-danger" role="alert">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>
+
+    <script src="{{ asset('js/app.js')}}"></script>
+    @yield('scripts')
 </body>
 </html>
